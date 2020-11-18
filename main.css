@@ -1,24 +1,3 @@
-.box {
-    position: relative;
-}
-
-.test {
-    width: 50px;
-    height: 50px;
-    color: #ffffff;
-    background-color: #2779bd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    border-radius: 50%;
-    cursor: pointer;
-
-    position: absolute;
-    top: 80%;
-    left: 50%;
-}
-
 @keyframes font-color {
     0% { color: #000000; }
     100% { color: #ffffff; }
@@ -29,28 +8,31 @@
 }
 @keyframes bg-color {
     0% { background-color: #2779bd55; }
-    100% { background-color: #2779bdff; }
+    100% { background-color: #2779bdee; }
 }
 @-webkit-keyframes bg-color {
     0% { background-color: #2779bd55; }
-    100% { background-color: #2779bdff; }
+    100% { background-color: #2779bdee; }
 }
 
 body {
-    margin: 3px;
-    padding: 3px;
+    background-color: lightcyan;
 }
 
 .station {
-    width: 100px;
-    height: 60px;
     background-color: #2779bd55;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: calc(90% + 0.5vw);
+    font-weight: bold;
     border-radius: 10%;
     cursor: pointer;
+    -webkit-text-stroke: 0.02em rgba(255, 255, 255, 1);
+}
+
+.box {
+    position: relative;
 }
 
 .station > a {
@@ -59,7 +41,7 @@ body {
 }
 
 .station:hover {
-    background-color: #2779bdff;
+    background-color: #2779bdee;
     animation: bg-color 0.5s;
     -webkit-animation: bg-color 0.5s;
 }
@@ -70,26 +52,59 @@ body {
     -webkit-animation: font-color 0.5s;
 }
 
-#chofusta {
+#imagebox {
+    padding-top: 17.1%;
+    padding-bottom: 17.1%;
+    border: 5px ridge #dd0076;
+    background-color: white;
+}
+
+#imagebox::after {
+    content: "";
+    border: 5px ridge #000088;
     position: absolute;
-    top: 15%;
-    left: 32%;
+    top: 5px;
+    left: 5px;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+}
+
+#chofusta {
+    width: 20%;
+    height: 16%;
+    position: absolute;
+    top: 52%;
+    left: 52%;
 }
 
 #meidaista {
+    width: 19%;
+    height: 16%;
     position: absolute;
-    top: 12%;
-    left: 55.5%;
-}
-
-#sasasta {
-    position: absolute;
-    top: 12%;
-    left: 65.5%;
+    top: 52%;
+    left: 30%;
 }
 
 #kitanosta {
+    width: 19%;
+    height: 16%;
     position: absolute;
-    top: 12%;
-    left: 8%;
+    top: 52%;
+    left: 74%;
+}
+
+#sasasta {
+    width: 20%;
+    height: 16%;
+    position: absolute;
+    top: 52%;
+    left: 7%;
+}
+
+#backtokeio {
+    width: 12%;
+    height: 10%;
+    position: absolute;
+    top: 10%;
+    left: 44%;
 }
