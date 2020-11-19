@@ -35,6 +35,13 @@ body {
     position: relative;
 }
 
+.layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 5px ridge #dd0076;
+}
+
 .station > a {
     color: #000000;
     text-decoration: none;
@@ -67,6 +74,10 @@ body {
     left: 5px;
     width: calc(100% - 10px);
     height: calc(100% - 10px);
+}
+
+#image {
+    z-index: 0;
 }
 
 #chofusta {

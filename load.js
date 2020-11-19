@@ -47,9 +47,9 @@ function loadImages(img) {
         img["meidaimae_s1_on"] = new Image();
         img["meidaimae_s1_on"].src = "image/meidaimae_s1_on.png";
         img["meidaimae_s2_off"] = new Image();
-        img["meidaimae_s2_off"].src = "image/meidaimae_2_off.png";
+        img["meidaimae_s2_off"].src = "image/meidaimae_s2_off.png";
         img["meidaimae_s2_on"] = new Image();
-        img["meidaimae_s2_on"].src = "image/meidaimae_2_on.png";
+        img["meidaimae_s2_on"].src = "image/meidaimae_s2_on.png";
 
         img["kitano_b1_off"] = new Image();
         img["kitano_b1_off"].src = "image/kitano_b1_off.png";

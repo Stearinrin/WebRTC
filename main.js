@@ -83,7 +83,21 @@ function setImagetbPadding(value) {
 
 function loadChofu() {
     //client_image_height_keio = document.getElementById("image").clientHeight;
-    document.getElementById("image").src = img["chofu"].src; 
+    document.getElementById("image").src = img["chofu"].src;
+    document.getElementById("layer1").src = img["chofu_b1_off"].src;
+    document.getElementById("layer1").hidden = false;
+    document.getElementById("layer2").src = img["chofu_b2_off"].src;
+    document.getElementById("layer2").hidden = false;
+    document.getElementById("layer3").src = img["chofu_b3_off"].src;
+    document.getElementById("layer3").hidden = false;
+    document.getElementById("layer4").src = img["chofu_s1_off"].src;
+    document.getElementById("layer4").hidden = false;
+    document.getElementById("layer5").src = img["chofu_s2_off"].src;
+    document.getElementById("layer5").hidden = false;
+    document.getElementById("layer6").src = img["chofu_s3_off"].src;
+    document.getElementById("layer6").hidden = false;
+    document.getElementById("layer7").src = img["chofu_s4_off"].src;
+    document.getElementById("layer7").hidden = false;
     setStationButtonHidden(true);
     setImagetbPadding("0");
 }
@@ -91,27 +105,52 @@ function loadChofu() {
 function loadMeidaimae() {
     //client_image_height_keio = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["meidaimae"].src; 
+    document.getElementById("layer1").src = img["meidaimae_s1_off"].src;
+    document.getElementById("layer1").hidden = false;
+    document.getElementById("layer2").src = img["meidaimae_s2_off"].src;
+    document.getElementById("layer2").hidden = false;
     setStationButtonHidden(true);
     setImagetbPadding("0");
 }
 
 function loadKitano() {
     //client_image_height_keio = document.getElementById("image").clientHeight;
-    document.getElementById("image").src = img["kitano"].src; 
+    document.getElementById("image").src = img["kitano"].src;
+    document.getElementById("layer1").src = img["kitano_b1_off"].src;
+    document.getElementById("layer1").hidden = false;
+    document.getElementById("layer2").src = img["kitano_s2_off"].src;
+    document.getElementById("layer2").hidden = false;
+    document.getElementById("layer3").src = img["kitano_s3_off"].src;
+    document.getElementById("layer3").hidden = false;
     setStationButtonHidden(true);
     setImagetbPadding("0");
 }
 
 function loadSasazuka() {
     //client_image_height_keio = document.getElementById("image").clientHeight;
-    document.getElementById("image").src = img["sasazuka"].src; 
+    document.getElementById("image").src = img["sasazuka"].src;
+    document.getElementById("layer1").src = img["sasazuka_b1_off"].src;
+    document.getElementById("layer1").hidden = false;
+    document.getElementById("layer2").src = img["sasazuka_s1_off"].src;
+    document.getElementById("layer2").hidden = false;
+    document.getElementById("layer3").src = img["sasazuka_s2_off"].src;
+    document.getElementById("layer3").hidden = false;
+    document.getElementById("layer4").src = img["sasazuka_s4_off"].src;
+    document.getElementById("layer4").hidden = false;
     setStationButtonHidden(true);
     setImagetbPadding("0");
 }
 
 function backToWholeImage() {    
     //client_image_height_sta = document.getElementById("image").clientHeight;
-    document.getElementById("image").src = img["keio"].src; 
+    document.getElementById("image").src = img["keio"].src;
+    document.getElementById("layer1").hidden = true;
+    document.getElementById("layer2").hidden = true;
+    document.getElementById("layer3").hidden = true;
+    document.getElementById("layer4").hidden = true;
+    document.getElementById("layer5").hidden = true;
+    document.getElementById("layer6").hidden = true;
+    document.getElementById("layer7").hidden = true;
     setStationButtonHidden(false);
     setImagetbPadding("17.1%");
 }
