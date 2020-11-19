@@ -17,6 +17,7 @@
     <title>遠隔操作体験特設サイト</title>
 </head>
 <body>
+    <div id="app">
     <div class="container">
     <div class="row">
     <div class="col-12">
@@ -33,13 +34,16 @@
     <div class="box">
         <div id="imagebox">
             <img id="image" src="image/keio.png" width="100%" alt="配線図">
-            <img id="layer1" class="layer" src="" width="100%" hidden="true">
+            <!-- <img id="layer1" class="layer" src="" width="100%" hidden="true">
             <img id="layer2" class="layer" src="" width="100%" hidden="true">
             <img id="layer3" class="layer" src="" width="100%" hidden="true">
             <img id="layer4" class="layer" src="" width="100%" hidden="true">
             <img id="layer5" class="layer" src="" width="100%" hidden="true">
             <img id="layer6" class="layer" src="" width="100%" hidden="true">
-            <img id="layer7" class="layer" src="" width="100%" hidden="true">
+            <img id="layer7" class="layer" src="" width="100%" hidden="true"> -->
+            <!-- <p  v-for="s in stations[selected_station].stops" >{{s}}</p> -->
+            <img v-for="s in stations[selected_station].stops" class="layer" :src="s.image" width="100%">
+            <img v-for="s in stations[selected_station].branchs" class="layer" :src="s.image" width="100%">
         </div>
         <!--<div class="test">
             <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
@@ -52,12 +56,11 @@
     </div>
     <p id="server-id" hidden="true"></p>
     <!--<textarea id="their-id"></textarea>
-    <button id="make-call" onclick="makeCall()">発信</button>-->
-    <video id="their-video" width="100%" autoplay muted playsinline></video>
+    <button id="make-call" onclick="makeCall()">発信</button>
+    <video id="their-video" width="100%" autoplay muted playsinline></video>-->
     </div>
     </div>
     </div>
-    <div id="app">
         <button v-for="s,k in stations[selected_station].stops" v-on:click="push_btn(selected_station,true,k)">{{s.text}}</button><br/>
         <button v-for="s,k in stations[selected_station].branchs" v-on:click="push_btn(selected_station,false,k)">{{s.text}}</button><br/>
     </div>

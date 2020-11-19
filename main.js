@@ -72,27 +72,44 @@ const stations = {
     "":{},
     chofu:{
         stops:{
-            s1:{text:"1番線進行",status:false,on_text:"1番線停車",off_text:"1番線進行",on_image:"",off_image:""},
-            s2:{text:"2番線進行",status:false,on_text:"2番線停車",off_text:"2番線進行",on_image:"",off_image:""},
-            s3:{text:"3番線進行",status:false,on_text:"3番線停車",off_text:"3番線進行",on_image:"",off_image:""},
-            s4:{text:"4番線進行",status:false,on_text:"4番線停車",off_text:"4番線進行",on_image:"",off_image:""}
+            s1: { text: "1番線進行", status: false, on_text: "1番線停車", off_text: "1番線進行", image: "image/chofu_s1_off.png", on_image: "image/chofu_s1_on.png", off_image:"image/chofu_s1_off.png" },
+            s2: { text: "2番線進行", status: false, on_text: "2番線停車", off_text: "2番線進行", image: "image/chofu_s2_off.png", on_image: "image/chofu_s2_on.png", off_image:"image/chofu_s2_off.png" },
+            s3: { text: "3番線進行", status: false, on_text: "3番線停車", off_text: "3番線進行", image: "image/chofu_s3_off.png", on_image: "image/chofu_s3_on.png", off_image:"image/chofu_s3_off.png" },
+            s4: { text: "4番線進行", status: false, on_text: "4番線停車", off_text: "4番線進行", image: "image/chofu_s4_off.png", on_image: "image/chofu_s4_on.png", off_image:"image/chofu_s4_off.png" }
         },
         branchs:{
-            b1:{text:"２番線入線",status:false,on_text:"１番線入線",off_text:"２番線入線",on_image:"",off_image:""},
-            b2:{text:"橋本方面",status:false,on_text:"京王八王子・高尾山口方面",off_text:"橋本方面",on_image:"",off_image:""},
-            b3:{text:"４番線入線",status:false,on_text:"３番線入線",off_text:"４番線入線",on_image:"",off_image:""}
+            b1: { text: "２番線入線", status: false, on_text: "１番線入線", off_text: "２番線入線", image: "image/chofu_b1_off.png", on_image: "image/chofu_b1_on.png", off_image: "image/chofu_b1_off.png" },
+            b2: { text: "橋本方面", status: false, on_text: "京王八王子・高尾山口方面", off_text: "橋本方面", image: "image/chofu_b2_off.png", on_image: "image/chofu_b2_on.png", off_image:"image/chofu_b2_off.png" },
+            b3: { text: "４番線入線", status: false, on_text: "３番線入線", off_text: "４番線入線", image: "image/chofu_b3_off.png", on_image: "image/chofu_b3_on.png", off_image:"image/chofu_b3_off.png" }
         }
     },
     meidaimae:{
         stops:{
-            s1:{text:"1番線停車",status:false,on_text:"1番線停車",off_text:"1番線進行",on_image:"",off_image:""},
-            s2:{text:"2番線停車",status:false,on_text:"2番線停車",off_text:"2番線進行",on_image:"",off_image:""}
+            s1: { text: "1番線停車", status: false, on_text: "1番線停車", off_text: "1番線進行", image: "image/meidaimae_s1_off.png", on_image: "image/meidaimae_s1_on.png", off_image:"image/meidaimae_s1_off.png" },
+            s2: { text: "2番線停車", status: false, on_text: "2番線停車", off_text: "2番線進行", image: "image/meidaimae_s2_off.png", on_image: "image/meidaimae_s2_on.png", off_image:"image/meidaimae_s2_off.png" }
         },
         branchs:{
         }
     },
-    sasazuka:{},
-    kitano:{}
+    sasazuka:{
+        stops:{
+            s1: { text: "1番線進行", status: false, on_text: "1番線停車", off_text: "1番線進行", image: "image/sasazuka_s1_off.png", on_image: "image/sasazuka_s1_on.png", off_image: "image/sasazuka_s1_off.png" },
+            s2: { text: "2番線進行", status: false, on_text: "2番線停車", off_text: "2番線進行", image: "image/sasazuka_s2_off.png", on_image: "image/sasazuka_s2_on.png", off_image: "image/sasazuka_s2_off.png" },
+            s4: { text: "4番線進行", status: false, on_text: "4番線停車", off_text: "4番線進行", image: "image/sasazuka_s4_off.png", on_image: "image/sasazuka_s4_on.png", off_image: "image/sasazuka_s4_off.png" }
+        },
+        branchs:{
+            b1: { text: "新宿方面", status: false, on_text: "本八幡方面", off_text: "新宿方面", image: "image/sasazuka_b1_off.png", on_image: "image/sasazuka_b1_on.png", off_image: "image/sasazuka_b1_off.png" }
+        }
+    },
+    kitano:{
+        stops:{
+            s2: { text: "2番線進行", status: false, on_text: "2番線停車", off_text: "2番線進行", image: "image/kitano_s2_off.png", on_image: "image/kitano_s2_on.png", off_image: "image/kitano_s2_off.png" },
+            s3: { text: "3番線進行", status: false, on_text: "3番線停車", off_text: "3番線進行", image: "image/kitano_s3_off.png", on_image: "image/kitano_s3_on.png", off_image: "image/kitano_s3_off.png" }
+        },
+        branchs:{
+            b1: { text: "京王八王子方面", status: false, on_text: "高尾山口方面", off_text: "京王八王子方面", image: "image/kitano_b1_off.png", on_image: "image/kitano_b1_on.png", off_image: "image/kitano_b1_off.png" }
+        }
+    }
 }
 
 const vue = new Vue({
@@ -102,13 +119,16 @@ const vue = new Vue({
         stations:stations
     },
     methods:{
-        push_btn:function(station,is_stop,operable_id){
+        push_btn:function(station,is_stop,operable_id) {
             console.log(operable_id)
-            if(is_stop){
+            if (is_stop) {
                 stations[station].stops[operable_id].status = !stations[station].stops[operable_id].status;
-                stations[station].stops[operable_id].text = (stations[station].stops[operable_id].status ? stations[station].stops[operable_id].on_text:stations[station].stops[operable_id].off_text);
-            } else {
+                stations[station].stops[operable_id].image = (stations[station].stops[operable_id].status ? stations[station].stops[operable_id].on_image : stations[station].stops[operable_id].off_image);
+                stations[station].stops[operable_id].text = (stations[station].stops[operable_id].status ? stations[station].stops[operable_id].on_text : stations[station].stops[operable_id].off_text);
+            } 
+            else {
                 stations[station].branchs[operable_id].status = !stations[station].branchs[operable_id].status;
+                stations[station].branchs[operable_id].image = (stations[station].branchs[operable_id].status ? stations[station].branchs[operable_id].on_image : stations[station].branchs[operable_id].off_image);
                 stations[station].branchs[operable_id].text = (stations[station].branchs[operable_id].status ? stations[station].branchs[operable_id].on_text:stations[station].branchs[operable_id].off_text);
             }
         }
@@ -132,20 +152,20 @@ function setImagetbPadding(value) {
 function loadChofu() {
     //client_image_height_keio = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["chofu"].src;
-    document.getElementById("layer1").src = img["chofu_b1_off"].src;
-    document.getElementById("layer1").hidden = false;
-    document.getElementById("layer2").src = img["chofu_b2_off"].src;
-    document.getElementById("layer2").hidden = false;
-    document.getElementById("layer3").src = img["chofu_b3_off"].src;
-    document.getElementById("layer3").hidden = false;
-    document.getElementById("layer4").src = img["chofu_s1_off"].src;
-    document.getElementById("layer4").hidden = false;
-    document.getElementById("layer5").src = img["chofu_s2_off"].src;
-    document.getElementById("layer5").hidden = false;
-    document.getElementById("layer6").src = img["chofu_s3_off"].src;
-    document.getElementById("layer6").hidden = false;
-    document.getElementById("layer7").src = img["chofu_s4_off"].src;
-    document.getElementById("layer7").hidden = false;
+    // document.getElementById("layer1").src = img["chofu_b1_off"].src;
+    // document.getElementById("layer1").hidden = false;
+    // document.getElementById("layer2").src = img["chofu_b2_off"].src;
+    // document.getElementById("layer2").hidden = false;
+    // document.getElementById("layer3").src = img["chofu_b3_off"].src;
+    // document.getElementById("layer3").hidden = false;
+    // document.getElementById("layer4").src = img["chofu_s1_off"].src;
+    // document.getElementById("layer4").hidden = false;
+    // document.getElementById("layer5").src = img["chofu_s2_off"].src;
+    // document.getElementById("layer5").hidden = false;
+    // document.getElementById("layer6").src = img["chofu_s3_off"].src;
+    // document.getElementById("layer6").hidden = false;
+    // document.getElementById("layer7").src = img["chofu_s4_off"].src;
+    // document.getElementById("layer7").hidden = false;
     setStationButtonHidden(true);
     setImagetbPadding("0");
     vue.selected_station = "chofu";
@@ -154,10 +174,10 @@ function loadChofu() {
 function loadMeidaimae() {
     //client_image_height_keio = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["meidaimae"].src; 
-    document.getElementById("layer1").src = img["meidaimae_s1_off"].src;
-    document.getElementById("layer1").hidden = false;
-    document.getElementById("layer2").src = img["meidaimae_s2_off"].src;
-    document.getElementById("layer2").hidden = false;
+    // document.getElementById("layer1").src = img["meidaimae_s1_off"].src;
+    // document.getElementById("layer1").hidden = false;
+    // document.getElementById("layer2").src = img["meidaimae_s2_off"].src;
+    // document.getElementById("layer2").hidden = false;
     setStationButtonHidden(true);
     setImagetbPadding("0");
     vue.selected_station = "meidaimae";
@@ -166,12 +186,12 @@ function loadMeidaimae() {
 function loadKitano() {
     //client_image_height_keio = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["kitano"].src;
-    document.getElementById("layer1").src = img["kitano_b1_off"].src;
-    document.getElementById("layer1").hidden = false;
-    document.getElementById("layer2").src = img["kitano_s2_off"].src;
-    document.getElementById("layer2").hidden = false;
-    document.getElementById("layer3").src = img["kitano_s3_off"].src;
-    document.getElementById("layer3").hidden = false;
+    // document.getElementById("layer1").src = img["kitano_b1_off"].src;
+    // document.getElementById("layer1").hidden = false;
+    // document.getElementById("layer2").src = img["kitano_s2_off"].src;
+    // document.getElementById("layer2").hidden = false;
+    // document.getElementById("layer3").src = img["kitano_s3_off"].src;
+    // document.getElementById("layer3").hidden = false;
     setStationButtonHidden(true);
     setImagetbPadding("0");
     vue.selected_station = "kitano";
@@ -180,14 +200,14 @@ function loadKitano() {
 function loadSasazuka() {
     //client_image_height_keio = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["sasazuka"].src;
-    document.getElementById("layer1").src = img["sasazuka_b1_off"].src;
-    document.getElementById("layer1").hidden = false;
-    document.getElementById("layer2").src = img["sasazuka_s1_off"].src;
-    document.getElementById("layer2").hidden = false;
-    document.getElementById("layer3").src = img["sasazuka_s2_off"].src;
-    document.getElementById("layer3").hidden = false;
-    document.getElementById("layer4").src = img["sasazuka_s4_off"].src;
-    document.getElementById("layer4").hidden = false;
+    // document.getElementById("layer1").src = img["sasazuka_b1_off"].src;
+    // document.getElementById("layer1").hidden = false;
+    // document.getElementById("layer2").src = img["sasazuka_s1_off"].src;
+    // document.getElementById("layer2").hidden = false;
+    // document.getElementById("layer3").src = img["sasazuka_s2_off"].src;
+    // document.getElementById("layer3").hidden = false;
+    // document.getElementById("layer4").src = img["sasazuka_s4_off"].src;
+    // document.getElementById("layer4").hidden = false;
     setStationButtonHidden(true);
     setImagetbPadding("0");
     vue.selected_station = "sasazuka";
@@ -196,13 +216,13 @@ function loadSasazuka() {
 function backToWholeImage() {    
     //client_image_height_sta = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["keio"].src;
-    document.getElementById("layer1").hidden = true;
-    document.getElementById("layer2").hidden = true;
-    document.getElementById("layer3").hidden = true;
-    document.getElementById("layer4").hidden = true;
-    document.getElementById("layer5").hidden = true;
-    document.getElementById("layer6").hidden = true;
-    document.getElementById("layer7").hidden = true;
+    // document.getElementById("layer1").hidden = true;
+    // document.getElementById("layer2").hidden = true;
+    // document.getElementById("layer3").hidden = true;
+    // document.getElementById("layer4").hidden = true;
+    // document.getElementById("layer5").hidden = true;
+    // document.getElementById("layer6").hidden = true;
+    // document.getElementById("layer7").hidden = true;
     setStationButtonHidden(false);
     setImagetbPadding("17.1%");
     vue.selected_station = "";
