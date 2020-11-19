@@ -66,6 +66,54 @@ let client_image_height_sta = 0;   // 駅詳細を表示するときのイメー
 let client_image_height_keio = 0;   // 駅全体を表示するときのイメージ高さ
 
 // :: to here
+let station_operables = {};
+
+const stations = {
+    "":{},
+    chofu:{
+        stops:{
+            s1:{text:"1番線進行",status:false,on_text:"1番線停車",off_text:"1番線進行",on_image:"",off_image:""},
+            s2:{text:"2番線進行",status:false,on_text:"2番線停車",off_text:"2番線進行",on_image:"",off_image:""},
+            s3:{text:"3番線進行",status:false,on_text:"3番線停車",off_text:"3番線進行",on_image:"",off_image:""},
+            s4:{text:"4番線進行",status:false,on_text:"4番線停車",off_text:"4番線進行",on_image:"",off_image:""}
+        },
+        branchs:{
+            b1:{text:"２番線入線",status:false,on_text:"１番線入線",off_text:"２番線入線",on_image:"",off_image:""},
+            b2:{text:"橋本方面",status:false,on_text:"京王八王子・高尾山口方面",off_text:"橋本方面",on_image:"",off_image:""},
+            b3:{text:"４番線入線",status:false,on_text:"３番線入線",off_text:"４番線入線",on_image:"",off_image:""}
+        }
+    },
+    meidaimae:{
+        stops:{
+            s1:{text:"1番線停車",status:false,on_text:"1番線停車",off_text:"1番線進行",on_image:"",off_image:""},
+            s2:{text:"2番線停車",status:false,on_text:"2番線停車",off_text:"2番線進行",on_image:"",off_image:""}
+        },
+        branchs:{
+        }
+    },
+    sasazuka:{},
+    kitano:{}
+}
+
+const vue = new Vue({
+    el:'#app',
+    data:{
+        selected_station:"",
+        stations:stations
+    },
+    methods:{
+        push_btn:function(station,is_stop,operable_id){
+            console.log(operable_id)
+            if(is_stop){
+                stations[station].stops[operable_id].status = !stations[station].stops[operable_id].status;
+                stations[station].stops[operable_id].text = (stations[station].stops[operable_id].status ? stations[station].stops[operable_id].on_text:stations[station].stops[operable_id].off_text);
+            } else {
+                stations[station].branchs[operable_id].status = !stations[station].branchs[operable_id].status;
+                stations[station].branchs[operable_id].text = (stations[station].branchs[operable_id].status ? stations[station].branchs[operable_id].on_text:stations[station].branchs[operable_id].off_text);
+            }
+        }
+    }
+});
 
 // functions
 function setStationButtonHidden(value) {
@@ -86,6 +134,7 @@ function loadChofu() {
     document.getElementById("image").src = img["chofu"].src; 
     setStationButtonHidden(true);
     setImagetbPadding("0");
+    vue.selected_station = "chofu";
 }
 
 function loadMeidaimae() {
@@ -93,6 +142,7 @@ function loadMeidaimae() {
     document.getElementById("image").src = img["meidaimae"].src; 
     setStationButtonHidden(true);
     setImagetbPadding("0");
+    vue.selected_station = "meidaimae";
 }
 
 function loadKitano() {
@@ -100,6 +150,7 @@ function loadKitano() {
     document.getElementById("image").src = img["kitano"].src; 
     setStationButtonHidden(true);
     setImagetbPadding("0");
+    vue.selected_station = "kitano";
 }
 
 function loadSasazuka() {
@@ -107,6 +158,7 @@ function loadSasazuka() {
     document.getElementById("image").src = img["sasazuka"].src; 
     setStationButtonHidden(true);
     setImagetbPadding("0");
+    vue.selected_station = "sasazuka";
 }
 
 function backToWholeImage() {    
@@ -114,4 +166,5 @@ function backToWholeImage() {
     document.getElementById("image").src = img["keio"].src; 
     setStationButtonHidden(false);
     setImagetbPadding("17.1%");
+    vue.selected_station = "";
 }
