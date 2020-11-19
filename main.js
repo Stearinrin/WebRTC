@@ -69,7 +69,7 @@ let client_image_height_keio = 0;   // 駅全体を表示するときのイメ�
 let station_operables = {};
 
 const stations = {
-    "":{},
+    "":{stops:{},branchs:{}},
     chofu:{
         stops:{
             s1:{text:"1番線進行",status:false,on_text:"1番線停車",off_text:"1番線進行",on_image:"",off_image:""},
@@ -91,8 +91,25 @@ const stations = {
         branchs:{
         }
     },
-    sasazuka:{},
-    kitano:{}
+    sasazuka:{
+        stops:{
+            s1:{text:"1番線停車",status:false,on_text:"1番線停車",off_text:"1番線進行",on_image:"",off_image:""},
+            s2:{text:"2番線停車",status:false,on_text:"2番線停車",off_text:"2番線進行",on_image:"",off_image:""},
+            s4:{text:"3番線停車",status:false,on_text:"3番線停車",off_text:"3番線進行",on_image:"",off_image:""}
+        },
+        branchs:{
+            b1:{text:"1番線停車",status:false,on_text:"新線新宿方面",off_text:"京王線新宿方面",on_image:"",off_image:""}
+        }
+    },
+    kitano:{
+        stops:{
+            s1:{text:"1番線停車",status:false,on_text:"1番線停車",off_text:"1番線進行",on_image:"",off_image:""},
+            s2:{text:"2番線停車",status:false,on_text:"2番線停車",off_text:"2番線進行",on_image:"",off_image:""}
+        },
+        branchs:{
+            b1:{text:"高尾山口方面",status:false,on_text:"高尾山口方面",off_text:"京王八王子方面",on_image:"",off_image:""}
+        }
+    }
 }
 
 const vue = new Vue({
