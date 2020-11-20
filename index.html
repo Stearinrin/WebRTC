@@ -10,80 +10,23 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/db6e84dbc8.js" crossorigin="anonymous"></script>
-    <script src="main.js" crossorigin="anonymous"></script>
     <title>SkyWay</title>
 </head>
 <body>
-    <video id="my-video" width="800px" autoplay muted playsinline></video>
-    <div class="box">
-        <img src="wiring.jpg" width="90%" alt="配線図">
-        <div class="test">
-            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-        </div>
-        <div id="chofusta" class="station" onclick="location.href='#chofu'">
-            <a href="#chofu">調布駅</a>
-        </div>
-        <!--<div id="meidaista" class="station">
-            <a href="#meidaimae">明大前駅</a>
-        </div>-->
-        <div id="sasasta" class="station" onclick="location.href='#sasazuka'">
-            <a href="#sasazuka">笹塚駅</a>
-        </div>
-        <div id="kitanosta" class="station" onclick="location.href='#kitano'">
-            <a href="#kitano">北野駅</a>
-        </div>
-    </div>
+    <video id="my-video" width="100%" autoplay muted playsinline></video>
     <p id="my-id"></p>
-    <textarea id="their-id"></textarea>
+    <!-- <input></textarea> -->
+    <select id="camera-id" name="number">
+        <option value="sasazuka" selected>笹塚</option>
+        <option value="chofu">調布</option>
+        <option value="meidaimae">明大前</option>
+        <option value="kitano">北野</option>
+      </select>
+    <button id="register">カメラを登録</button>
+
+    <input id="their-id"></textarea>
     <button id="make-call">発信</button>
-    <video id="their-video" width="400px" autoplay muted playsinline></video>
-    <script>
-        let localStream;
-        navigator.mediaDevices.getUserMedia({video:true, audio:true})
-            .then( stream => {
-                const videoElm = document.getElementById('my-video');
-                videoElm.srcObject = stream;
-                videoElm.play();
-                localStream = stream;
-            }).catch( error => {
-                console.error('mediaDevice.getUserMedia() error:', error);
-                return;
-            });
 
-        // make peer
-        const peer = new Peer({
-            key: '1ef665fb-d3b0-41c6-9d95-8a4aa0fabd9e',
-            debug: 3
-        });
-
-        // get peer id
-        peer.on('open', () => {
-            document.getElementById('my-id').textContent = peer.id;
-        });
-
-        // 発信処理
-        document.getElementById('make-call').onclick = () => {
-            const theirID = document.getElementById('their-id').value;
-            const mediaConnection = peer.call(theirID, localStream);
-            setEventListener(mediaConnection);
-        };
-
-        // イベントリスナを設置する関数
-        const setEventListener = mediaConnection => {
-            mediaConnection.on('stream', stream => {
-                // video要素にカメラ映像をセットして再生
-                const videoElm = document.getElementById('their-video')
-                videoElm.srcObject = stream;
-                videoElm.play();
-            });
-        }
-
-        // 着信処理
-        peer.on('call', mediaConnection => {
-            mediaConnection.answer(localStream);
-            setEventListener(mediaConnection);
-        });
-
-    </script>
+    <script src="main.js" crossorigin="anonymous"></script>
 </body>
 </html>
