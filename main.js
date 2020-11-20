@@ -1,7 +1,7 @@
 // When the page was loaded :: from here
 let localStream;
 /*
-navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+navigator.mediaDevices.getUserMedia({ video: false, audio: false })
     .then( stream => {
         const videoElm = document.getElementById('video');
         videoElm.srcObject = stream;
@@ -29,13 +29,11 @@ peer.on('open', () => {
 });
 
 // 発信処理
-/*
-function makeCall() {
-    const theirID = document.getElementById('their-id').value;
+function makeCall(theirID) {
+    // document.getElementById('their-id').value;
     const mediaConnection = peer.call(theirID, localStream);
     setEventListener(mediaConnection);
 };
-*/
 
 // イベントリスナを設置する関数
 const setEventListener = mediaConnection => {
@@ -118,7 +116,9 @@ const vue = new Vue({
     el:'#app',
     data:{
         selected_station:"",
-        stations:stations
+        stations:stations,
+        camera_peerids:{},
+        theirID:"all"
     },
     methods:{
         push_btn:function(station,is_stop,operable_id) {
@@ -135,6 +135,22 @@ const vue = new Vue({
                 stations[station].branchs[operable_id].text = (stations[station].branchs[operable_id].status ? stations[station].branchs[operable_id].on_text:stations[station].branchs[operable_id].off_text);
                 stations[station].branchs[operable_id].class = (stations[station].branchs[operable_id].status ? "btn btn-dark control-btn" : "btn btn-outline-dark control-btn");
             }
+        }
+    },
+    mounted:function(){
+        const url = 'https://us-central1-koken-key.cloudfunctions.net/referPeerid';
+
+        fetch(url)
+        .then(function (data) {
+        return data.json(); // 読み込むデータをJSONに設定
+        })
+        .then(function (json) {
+            this.camera_peerids = json
+        });
+    },
+    watch:{
+        selected_station:function(selected_station){
+            makeCall(camera_peerids[selected_station].peer_id)
         }
     }
 });
