@@ -1,5 +1,6 @@
 // When the page was loaded :: from here
 let localStream;
+/*
 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
     .then( stream => {
         const videoElm = document.getElementById('video');
@@ -10,6 +11,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         console.error('mediaDevice.getUserMedia() error:', error);
         return;
     });
+    */
 
 // make peer
 const peer = new Peer({
@@ -39,7 +41,7 @@ function makeCall() {
 const setEventListener = mediaConnection => {
     mediaConnection.on('stream', stream => {
         // video要素にカメラ映像をセットして再生
-        const videoElm = document.getElementById('their-video')
+        const videoElm = document.getElementById('video')
         videoElm.srcObject = stream;
         videoElm.play();
     });
@@ -72,42 +74,42 @@ const stations = {
     "":{},
     chofu:{
         stops:{
-            s1: { text: "1番線進行", status: false, on_text: "1番線停車", off_text: "1番線進行", image: "image/chofu_s1_off.png", on_image: "image/chofu_s1_on.png", off_image:"image/chofu_s1_off.png" },
-            s2: { text: "2番線進行", status: false, on_text: "2番線停車", off_text: "2番線進行", image: "image/chofu_s2_off.png", on_image: "image/chofu_s2_on.png", off_image:"image/chofu_s2_off.png" },
-            s3: { text: "3番線進行", status: false, on_text: "3番線停車", off_text: "3番線進行", image: "image/chofu_s3_off.png", on_image: "image/chofu_s3_on.png", off_image:"image/chofu_s3_off.png" },
-            s4: { text: "4番線進行", status: false, on_text: "4番線停車", off_text: "4番線進行", image: "image/chofu_s4_off.png", on_image: "image/chofu_s4_on.png", off_image:"image/chofu_s4_off.png" }
+            s1: { text: "1番線進行", status: false, on_text: "1番線停車", off_text: "1番線進行", image: "image/chofu_s1_off.png", on_image: "image/chofu_s1_on.png", off_image:"image/chofu_s1_off.png", class:"btn btn-outline-info control-btn" },
+            s2: { text: "2番線進行", status: false, on_text: "2番線停車", off_text: "2番線進行", image: "image/chofu_s2_off.png", on_image: "image/chofu_s2_on.png", off_image:"image/chofu_s2_off.png", class:"btn btn-outline-info control-btn" },
+            s3: { text: "3番線進行", status: false, on_text: "3番線停車", off_text: "3番線進行", image: "image/chofu_s3_off.png", on_image: "image/chofu_s3_on.png", off_image:"image/chofu_s3_off.png", class:"btn btn-outline-info control-btn" },
+            s4: { text: "4番線進行", status: false, on_text: "4番線停車", off_text: "4番線進行", image: "image/chofu_s4_off.png", on_image: "image/chofu_s4_on.png", off_image:"image/chofu_s4_off.png", class:"btn btn-outline-info control-btn" }
         },
         branchs:{
-            b1: { text: "２番線入線", status: false, on_text: "１番線入線", off_text: "２番線入線", image: "image/chofu_b1_off.png", on_image: "image/chofu_b1_on.png", off_image: "image/chofu_b1_off.png" },
-            b2: { text: "橋本方面", status: false, on_text: "京王八王子・高尾山口方面", off_text: "橋本方面", image: "image/chofu_b2_off.png", on_image: "image/chofu_b2_on.png", off_image:"image/chofu_b2_off.png" },
-            b3: { text: "４番線入線", status: false, on_text: "３番線入線", off_text: "４番線入線", image: "image/chofu_b3_off.png", on_image: "image/chofu_b3_on.png", off_image:"image/chofu_b3_off.png" }
+            b1: { text: "２番線入線", status: false, on_text: "１番線入線", off_text: "２番線入線", image: "image/chofu_b1_off.png", on_image: "image/chofu_b1_on.png", off_image: "image/chofu_b1_off.png", class:"btn btn-outline-dark control-btn" },
+            b2: { text: "橋本方面", status: false, on_text: "京王八王子・高尾山口方面", off_text: "橋本方面", image: "image/chofu_b2_off.png", on_image: "image/chofu_b2_on.png", off_image:"image/chofu_b2_off.png", class:"btn btn-outline-dark control-btn" },
+            b3: { text: "４番線入線", status: false, on_text: "３番線入線", off_text: "４番線入線", image: "image/chofu_b3_off.png", on_image: "image/chofu_b3_on.png", off_image:"image/chofu_b3_off.png", class:"btn btn-outline-dark control-btn" }
         }
     },
     meidaimae:{
         stops:{
-            s1: { text: "1番線停車", status: false, on_text: "1番線停車", off_text: "1番線進行", image: "image/meidaimae_s1_off.png", on_image: "image/meidaimae_s1_on.png", off_image:"image/meidaimae_s1_off.png" },
-            s2: { text: "2番線停車", status: false, on_text: "2番線停車", off_text: "2番線進行", image: "image/meidaimae_s2_off.png", on_image: "image/meidaimae_s2_on.png", off_image:"image/meidaimae_s2_off.png" }
+            s1: { text: "1番線停車", status: false, on_text: "1番線停車", off_text: "1番線進行", image: "image/meidaimae_s1_off.png", on_image: "image/meidaimae_s1_on.png", off_image:"image/meidaimae_s1_off.png", class:"btn btn-outline-info control-btn" },
+            s2: { text: "2番線停車", status: false, on_text: "2番線停車", off_text: "2番線進行", image: "image/meidaimae_s2_off.png", on_image: "image/meidaimae_s2_on.png", off_image:"image/meidaimae_s2_off.png", class:"btn btn-outline-info control-btn" }
         },
         branchs:{
         }
     },
     sasazuka:{
         stops:{
-            s1: { text: "1番線進行", status: false, on_text: "1番線停車", off_text: "1番線進行", image: "image/sasazuka_s1_off.png", on_image: "image/sasazuka_s1_on.png", off_image: "image/sasazuka_s1_off.png" },
-            s2: { text: "2番線進行", status: false, on_text: "2番線停車", off_text: "2番線進行", image: "image/sasazuka_s2_off.png", on_image: "image/sasazuka_s2_on.png", off_image: "image/sasazuka_s2_off.png" },
-            s4: { text: "4番線進行", status: false, on_text: "4番線停車", off_text: "4番線進行", image: "image/sasazuka_s4_off.png", on_image: "image/sasazuka_s4_on.png", off_image: "image/sasazuka_s4_off.png" }
+            s1: { text: "1番線進行", status: false, on_text: "1番線停車", off_text: "1番線進行", image: "image/sasazuka_s1_off.png", on_image: "image/sasazuka_s1_on.png", off_image: "image/sasazuka_s1_off.png", class:"btn btn-outline-info control-btn" },
+            s2: { text: "2番線進行", status: false, on_text: "2番線停車", off_text: "2番線進行", image: "image/sasazuka_s2_off.png", on_image: "image/sasazuka_s2_on.png", off_image: "image/sasazuka_s2_off.png", class:"btn btn-outline-info control-btn" },
+            s4: { text: "4番線進行", status: false, on_text: "4番線停車", off_text: "4番線進行", image: "image/sasazuka_s4_off.png", on_image: "image/sasazuka_s4_on.png", off_image: "image/sasazuka_s4_off.png", class:"btn btn-outline-info control-btn" }
         },
         branchs:{
-            b1: { text: "新宿方面", status: false, on_text: "本八幡方面", off_text: "新宿方面", image: "image/sasazuka_b1_off.png", on_image: "image/sasazuka_b1_on.png", off_image: "image/sasazuka_b1_off.png" }
+            b1: { text: "新宿方面", status: false, on_text: "本八幡方面", off_text: "新宿方面", image: "image/sasazuka_b1_off.png", on_image: "image/sasazuka_b1_on.png", off_image: "image/sasazuka_b1_off.png", class:"btn btn-outline-dark control-btn" }
         }
     },
     kitano:{
         stops:{
-            s2: { text: "2番線進行", status: false, on_text: "2番線停車", off_text: "2番線進行", image: "image/kitano_s2_off.png", on_image: "image/kitano_s2_on.png", off_image: "image/kitano_s2_off.png" },
-            s3: { text: "3番線進行", status: false, on_text: "3番線停車", off_text: "3番線進行", image: "image/kitano_s3_off.png", on_image: "image/kitano_s3_on.png", off_image: "image/kitano_s3_off.png" }
+            s2: { text: "2番線進行", status: false, on_text: "2番線停車", off_text: "2番線進行", image: "image/kitano_s2_off.png", on_image: "image/kitano_s2_on.png", off_image: "image/kitano_s2_off.png", class:"btn btn-outline-info control-btn" },
+            s3: { text: "3番線進行", status: false, on_text: "3番線停車", off_text: "3番線進行", image: "image/kitano_s3_off.png", on_image: "image/kitano_s3_on.png", off_image: "image/kitano_s3_off.png", class:"btn btn-outline-info control-btn" }
         },
         branchs:{
-            b1: { text: "京王八王子方面", status: false, on_text: "高尾山口方面", off_text: "京王八王子方面", image: "image/kitano_b1_off.png", on_image: "image/kitano_b1_on.png", off_image: "image/kitano_b1_off.png" }
+            b1: { text: "京王八王子方面", status: false, on_text: "高尾山口方面", off_text: "京王八王子方面", image: "image/kitano_b1_off.png", on_image: "image/kitano_b1_on.png", off_image: "image/kitano_b1_off.png", class:"btn btn-outline-dark control-btn" }
         }
     }
 }
@@ -125,11 +127,13 @@ const vue = new Vue({
                 stations[station].stops[operable_id].status = !stations[station].stops[operable_id].status;
                 stations[station].stops[operable_id].image = (stations[station].stops[operable_id].status ? stations[station].stops[operable_id].on_image : stations[station].stops[operable_id].off_image);
                 stations[station].stops[operable_id].text = (stations[station].stops[operable_id].status ? stations[station].stops[operable_id].on_text : stations[station].stops[operable_id].off_text);
+                stations[station].stops[operable_id].class = (stations[station].stops[operable_id].status ? "btn btn-info control-btn" : "btn btn-outline-info control-btn");
             } 
             else {
                 stations[station].branchs[operable_id].status = !stations[station].branchs[operable_id].status;
                 stations[station].branchs[operable_id].image = (stations[station].branchs[operable_id].status ? stations[station].branchs[operable_id].on_image : stations[station].branchs[operable_id].off_image);
                 stations[station].branchs[operable_id].text = (stations[station].branchs[operable_id].status ? stations[station].branchs[operable_id].on_text:stations[station].branchs[operable_id].off_text);
+                stations[station].branchs[operable_id].class = (stations[station].branchs[operable_id].status ? "btn btn-dark control-btn" : "btn btn-outline-dark control-btn");
             }
         }
     }
@@ -142,6 +146,7 @@ function setStationButtonHidden(value) {
     document.getElementById("kitanosta").hidden = value;
     document.getElementById("sasasta").hidden = value;
     document.getElementById("backtokeio").hidden = !value;
+    document.getElementById("describe-text").hidden = value;
 }
 
 function setImagetbPadding(value) {

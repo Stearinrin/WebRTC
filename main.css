@@ -19,6 +19,10 @@ body {
     background-color: lightcyan;
 }
 
+h1 {
+    margin: 0.5em;
+}
+
 .station {
     background-color: #2779bd55;
     display: flex;
@@ -57,6 +61,15 @@ body {
     color: #ffffff;
     animation: font-color 0.5s;
     -webkit-animation: font-color 0.5s;
+}
+
+.control-btns {
+    text-align: center;
+    margin: 0.5em;
+}
+
+.control-btn {
+    margin: 0.2em;
 }
 
 #imagebox {

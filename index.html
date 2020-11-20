@@ -60,12 +60,19 @@
     <video id="their-video" width="100%" autoplay muted playsinline></video>-->
     </div>
     </div>
+    <div class="control-btns">
+        <h3>こちらから操作できます</h3>
+        <p id="describe-text">駅をクリックしてみてください！</p>
+        <button v-for="s,k in stations[selected_station].stops" v-on:click="push_btn(selected_station,true,k)" :class="s.class">{{s.text}}</button><br/>
+        <button v-for="s,k in stations[selected_station].branchs" v-on:click="push_btn(selected_station,false,k)" :class="s.class">{{s.text}}</button><br/>
     </div>
-        <button v-for="s,k in stations[selected_station].stops" v-on:click="push_btn(selected_station,true,k)">{{s.text}}</button><br/>
-        <button v-for="s,k in stations[selected_station].branchs" v-on:click="push_btn(selected_station,false,k)">{{s.text}}</button><br/>
     </div>
+    </div>
+    <footer>
+        <p style="text-align: center;">&copy; 2020 UEC Koken.</p>
+    </footer>
     <script>
-
+        
     </script>
     <script src="main.js" crossorigin="anonymous"></script>
 </body>
