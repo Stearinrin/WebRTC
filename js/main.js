@@ -62,9 +62,6 @@ peer.on('close', () => {
 let img = new Map();
 loadImages(img);
 
-let client_image_height_sta = 0;   // 駅詳細を表示するときのイメージ高さ
-let client_image_height_keio = 0;   // 駅全体を表示するときのイメージ高さ
-
 // :: to here
 let station_operables = {};
 
@@ -128,13 +125,26 @@ const vue = new Vue({
                 stations[station].stops[operable_id].image = (stations[station].stops[operable_id].status ? stations[station].stops[operable_id].on_image : stations[station].stops[operable_id].off_image);
                 stations[station].stops[operable_id].text = (stations[station].stops[operable_id].status ? stations[station].stops[operable_id].on_text : stations[station].stops[operable_id].off_text);
                 stations[station].stops[operable_id].class = (stations[station].stops[operable_id].status ? "btn btn-info control-btn" : "btn btn-outline-info control-btn");
-                
+                if (!Token) {
+                    getToken(station);
+                }
+                else {
+                    updateToken();
+                }
+                sendOperate(operable_id, "switch", (stations[station].stops[operable_id].status ? "On" : "Off"));
             } 
             else {
                 stations[station].branchs[operable_id].status = !stations[station].branchs[operable_id].status;
                 stations[station].branchs[operable_id].image = (stations[station].branchs[operable_id].status ? stations[station].branchs[operable_id].on_image : stations[station].branchs[operable_id].off_image);
                 stations[station].branchs[operable_id].text = (stations[station].branchs[operable_id].status ? stations[station].branchs[operable_id].on_text:stations[station].branchs[operable_id].off_text);
                 stations[station].branchs[operable_id].class = (stations[station].branchs[operable_id].status ? "btn btn-dark control-btn" : "btn btn-outline-dark control-btn");
+                if (!Token) {
+                    getToken(station);
+                }
+                else {
+                    updateToken();
+                }
+                sendOperate(operable_id, "switch", (stations[station].stops[operable_id].status ? "On" : "Off"));
             }
         }
     },

@@ -41,8 +41,8 @@ async function PostHttp(url){
     return await getData();
 }
 
-const endpoint = "http://localhost:8080"
-//const endpoint = "http://plarail-ikezawa-api.d.takoyaki3.com:8080"
+//const endpoint = "http://localhost:8080"
+const endpoint = "http://plarail-ikezawa-api.d.takoyaki3.com:8080"
 
 async function getDevicesList(){
     const url = `${endpoint}/devices`
