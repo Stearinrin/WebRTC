@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <script src="api.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+    (async ()=>{
+        const deviceList = await getDevicesList()
+        console.log(deviceList)
+        const deviceDetail = await getDeviceDetail("Device1")
+        console.log(deviceDetail)
+        const unitsList = await getUnitsList("Device1")
+        console.log(unitsList)
+        getToken("meidaimae")
+
+        updateToken()
+
+        const unitDetail =await getUnitDetail("meidaimae")
+        console.log(unitDetail)
+
+        const res = await sendOperate("meidaimae_s1","switch","On")
+        console.log(res)
+
+    })()
+
+</script>
+</html>
