@@ -12,9 +12,9 @@ async function GetHttp(url, queries){
 
     const getData = async () => {
         try {
-          const response = await fetch(targetURL, { headers: {
-            'Content-Type': 'application/json'            
-          }});
+          const response = await fetch(targetURL, { 
+            mode: 'no-cors'
+          });
           if (response.ok) {
             const jsonResponse = await response.json();
             return jsonResponse
@@ -30,7 +30,10 @@ async function GetHttp(url, queries){
 async function PostHttp(url){
     const getData = async () => {
         try {
-          const response = await fetch(url,{method:"POST"});
+          const response = await fetch(url, {
+            method:"POST",
+            mode: 'no-cors'
+          });
           if (response.ok) {
             const jsonResponse = await response.json();
             return jsonResponse

@@ -128,7 +128,7 @@ const vue = new Vue({
         theirID:"all"
     },
     methods:{
-        push_btn:function(station,is_stop,operable_id) {
+        push_btn:async function(station,is_stop,operable_id) {
             console.log(operable_id)
             if (is_stop) {
                 stations[station].stops[operable_id].status = !stations[station].stops[operable_id].status;
@@ -136,7 +136,7 @@ const vue = new Vue({
                 stations[station].stops[operable_id].text = (stations[station].stops[operable_id].status ? stations[station].stops[operable_id].on_text : stations[station].stops[operable_id].off_text);
                 stations[station].stops[operable_id].class = (stations[station].stops[operable_id].status ? "btn btn-info control-btn" : "btn btn-outline-info control-btn");
                 
-                sendOperate(operable_id, "switch", (stations[station].stops[operable_id].status ? "On" : "Off"));
+                await sendOperate(station + "_" + operable_id, "switch", (stations[station].stops[operable_id].status ? "On" : "Off"));
             } 
             else {
                 stations[station].branchs[operable_id].status = !stations[station].branchs[operable_id].status;
@@ -144,7 +144,7 @@ const vue = new Vue({
                 stations[station].branchs[operable_id].text = (stations[station].branchs[operable_id].status ? stations[station].branchs[operable_id].on_text:stations[station].branchs[operable_id].off_text);
                 stations[station].branchs[operable_id].class = (stations[station].branchs[operable_id].status ? "btn btn-dark control-btn" : "btn btn-outline-dark control-btn");
                 
-                sendOperate(operable_id, "switch", (stations[station].stops[operable_id].status ? "On" : "Off"));
+                await sendOperate(station + "_" + operable_id, "switch", (stations[station].stops[operable_id].status ? "On" : "Off"));
             }
         }
     },
@@ -153,7 +153,7 @@ const vue = new Vue({
 
         fetch(url)
         .then(function (data) {
-        return data.json(); // 読み込むデータをJSONに設定
+            return data.json(); // 読み込むデータをJSONに設定
         })
         .then(function (json) {
             this.camera_peerids = json
@@ -181,7 +181,7 @@ function setImagetbPadding(value) {
     document.getElementById("imagebox").style.setProperty('padding-bottom', value);
 }
 
-function loadChofu() {
+async function loadChofu() {
     //client_image_height_keio = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["chofu"].src;
     // document.getElementById("layer1").src = img["chofu_b1_off"].src;
@@ -202,11 +202,11 @@ function loadChofu() {
     setImagetbPadding("0");
 
     vue.selected_station = "chofu";
-    getToken("chofu");
-    setInterval("updateToken()", 10000);
+    await getToken("chofu");
+    //setInterval("(async () => { await updateToken(); })()", 10000);
 }
 
-function loadMeidaimae() {
+async function loadMeidaimae() {
     //client_image_height_keio = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["meidaimae"].src; 
     // document.getElementById("layer1").src = img["meidaimae_s1_off"].src;
@@ -217,11 +217,11 @@ function loadMeidaimae() {
     setImagetbPadding("0");
 
     vue.selected_station = "meidaimae";
-    getToken("meidaimae");
-    setInterval("updateToken()", 10000);
+    await getToken("meidaimae");
+    //setInterval("(async () => { await updateToken(); })()", 10000);
 }
 
-function loadKitano() {
+async function loadKitano() {
     //client_image_height_keio = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["kitano"].src;
     // document.getElementById("layer1").src = img["kitano_b1_off"].src;
@@ -234,11 +234,11 @@ function loadKitano() {
     setImagetbPadding("0");
 
     vue.selected_station = "kitano";
-    getToken("kitano");
-    setInterval("updateToken()", 10000);
+    await getToken("kitano");
+    //setInterval("(async () => { await updateToken(); })()", 10000);
 }
 
-function loadSasazuka() {
+async function loadSasazuka() {
     //client_image_height_keio = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["sasazuka"].src;
     // document.getElementById("layer1").src = img["sasazuka_b1_off"].src;
@@ -253,11 +253,11 @@ function loadSasazuka() {
     setImagetbPadding("0");
 
     vue.selected_station = "sasazuka";
-    getToken("sasazuka");
-    setInterval("updateToken()", 10000);
+    await getToken("sasazuka");
+    //setInterval("(async () => { await updateToken(); })()", 10000);
 }
 
-function backToWholeImage() {    
+async function backToWholeImage() {    
     //client_image_height_sta = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["keio"].src;
     // document.getElementById("layer1").hidden = true;
@@ -272,9 +272,12 @@ function backToWholeImage() {
     vue.selected_station = "";
 }
 
-getToken("train");
 //alert(getLog());
-function displaySpeed(obj) {
+(async () => {
+    await getToken("train");
+    setInterval("(async () => { await updateToken(); })()", 10000);
+})();
+async function displaySpeed(obj) {
     document.getElementById('speedvalue').value = obj.value;
-    sendOperate("train", "speed", obj.value + 50);
+    await sendOperate("train", "speed", obj.value + 50);
 }
