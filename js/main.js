@@ -62,6 +62,10 @@ peer.on('close', () => {
 let img = new Map();
 loadImages(img);
 
+let canvas = document.getElementById("freezelayer");
+let context = canvas.getContext('2d');
+context.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+
 // :: to here
 let station_operables = {};
 
@@ -126,12 +130,6 @@ const vue = new Vue({
                 stations[station].stops[operable_id].text = (stations[station].stops[operable_id].status ? stations[station].stops[operable_id].on_text : stations[station].stops[operable_id].off_text);
                 stations[station].stops[operable_id].class = (stations[station].stops[operable_id].status ? "btn btn-info control-btn" : "btn btn-outline-info control-btn");
                 
-                if (!Token) {
-                    getToken(station);
-                }
-                else {
-                    setInterval("updateToken()", 10000);
-                }
                 sendOperate(operable_id, "switch", (stations[station].stops[operable_id].status ? "On" : "Off"));
             } 
             else {
@@ -140,12 +138,6 @@ const vue = new Vue({
                 stations[station].branchs[operable_id].text = (stations[station].branchs[operable_id].status ? stations[station].branchs[operable_id].on_text:stations[station].branchs[operable_id].off_text);
                 stations[station].branchs[operable_id].class = (stations[station].branchs[operable_id].status ? "btn btn-dark control-btn" : "btn btn-outline-dark control-btn");
                 
-                if (!Token) {
-                    getToken(station);
-                }
-                else {
-                    setInterval("updateToken()", 10000);
-                }
                 sendOperate(operable_id, "switch", (stations[station].stops[operable_id].status ? "On" : "Off"));
             }
         }
@@ -202,7 +194,14 @@ function loadChofu() {
     // document.getElementById("layer7").hidden = false;
     setStationButtonHidden(true);
     setImagetbPadding("0");
+
     vue.selected_station = "chofu";
+    if (!Token) {
+        getToken("chofu");
+    }
+    else {
+        setInterval("updateToken()", 10000);
+    }
 }
 
 function loadMeidaimae() {
@@ -214,7 +213,14 @@ function loadMeidaimae() {
     // document.getElementById("layer2").hidden = false;
     setStationButtonHidden(true);
     setImagetbPadding("0");
+
     vue.selected_station = "meidaimae";
+    if (!Token) {
+        getToken("meidaimae");
+    }
+    else {
+        setInterval("updateToken()", 10000);
+    }
 }
 
 function loadKitano() {
@@ -228,7 +234,14 @@ function loadKitano() {
     // document.getElementById("layer3").hidden = false;
     setStationButtonHidden(true);
     setImagetbPadding("0");
+
     vue.selected_station = "kitano";
+    if (!Token) {
+        getToken("kitano");
+    }
+    else {
+        setInterval("updateToken()", 10000);
+    }
 }
 
 function loadSasazuka() {
@@ -244,7 +257,14 @@ function loadSasazuka() {
     // document.getElementById("layer4").hidden = false;
     setStationButtonHidden(true);
     setImagetbPadding("0");
+
     vue.selected_station = "sasazuka";
+    if (!Token) {
+        getToken("sasazuka");
+    }
+    else {
+        setInterval("updateToken()", 10000);
+    }
 }
 
 function backToWholeImage() {    

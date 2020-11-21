@@ -7,7 +7,7 @@
     <meta property="og:url" content="https://chofufes-plarail-2020.takoyaki3.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="工研×鉄研 プラレール遠隔操作体験 特設サイト" />
-    <meta property="og:description" content="プラレール操作を遠隔で体験してみませんか？ここでは誰でも気軽に遠隔操作を行えます！！" />
+    <meta property="og:description" content="『工学研究部×鉄道研究会コラボ企画』自動！？遠隔！？進化したプラレール展示。列車やポイント、駅の停車をスマホやPCで遠隔操作できる他、自動運転区間とも直通します。" />
     <meta property="og:image" content="image/thumbnail.png" />
     <meta name="twitter:card" content="summary"></meta>
     <meta name="twitter:site" content="@ueckoken" />
@@ -64,7 +64,7 @@
         <div id="kitanosta" class="station" onclick="loadKitano()">北野駅</div>
         <div id="backtokeio" class="station" hidden="true" onclick="backToWholeImage()">戻る</div>
 
-        <div id="freezelayer" hidden="false"></div>
+        <canvas id="freezelayer" width="100%" height="100%" hidden="false"></canvas>
     </div>
     <!-- <p id="server-id" hidden="true"></p>
     <textarea id="their-id"></textarea>
@@ -80,9 +80,12 @@
     </div>
     </div>
     <footer>
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="工研🛠／鉄研🚎コラボ開催中！今ならプラレールの遠隔操作ができるよ！今すぐアクセス！" data-hashtags="バーチャル調布祭" data-lang="ja" data-show-count="false">Tweet</a>
+        <i class="fa fa-link" aria-hidden="true"></i><a href="https://www.koken.club.uec.ac.jp/chofusai2020/">工学研究部 調布祭特設サイト</a>
+        <i class="fa fa-link" aria-hidden="true"></i><a href="http://www.chofusai.uec.ac.jp/about.html">第70回 バーチャル調布祭</a>
+        <br>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="工研🛠／鉄研🚎コラボ開催中！今ならプラレールの遠隔操作ができるよ！今すぐアクセス！" data-hashtags="調布祭" data-lang="ja" data-show-count="false">Tweet</a>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        <a href="https://twitter.com/ueckoken?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-text="工研🛠／鉄研🚎コラボ開催中！今ならプラレールの遠隔操作ができるよ！今すぐアクセス！" data-hashtags="バーチャル調布祭" data-lang="ja" data-show-count="false">Follow @ueckoken</a>
+        <a href="https://twitter.com/ueckoken?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-text="工研🛠／鉄研🚎コラボ開催中！今ならプラレールの遠隔操作ができるよ！今すぐアクセス！" data-hashtags="調布祭" data-lang="ja" data-show-count="false">Follow @ueckoken</a>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="https://chofufes-plarail-2020.takoyaki3.com/" data-color="default" data-size="large" data-count="false" style="display: none;"></div>
         <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
