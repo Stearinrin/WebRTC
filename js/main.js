@@ -125,7 +125,8 @@ const vue = new Vue({
         selected_station:"",
         stations:stations,
         camera_peerids:{},
-        theirID:"all"
+        theirID:"all",
+        is_all:true
     },
     methods:{
         push_btn:async function(station,is_stop,operable_id) {
@@ -202,6 +203,7 @@ async function loadChofu() {
     setImagetbPadding("0");
 
     vue.selected_station = "chofu";
+    vue.is_all = false;
     //await getToken("chofu");
     //setInterval("(async () => { await updateToken(); })()", 10000);
 }
@@ -217,6 +219,7 @@ async function loadMeidaimae() {
     setImagetbPadding("0");
 
     vue.selected_station = "meidaimae";
+    vue.is_all = false;
     //await getToken("meidaimae");
     //setInterval("(async () => { await updateToken(); })()", 10000);
 }
@@ -234,6 +237,7 @@ async function loadKitano() {
     setImagetbPadding("0");
 
     vue.selected_station = "kitano";
+    vue.is_all = false;
     //await getToken("kitano");
     //setInterval("(async () => { await updateToken(); })()", 10000);
 }
@@ -253,6 +257,7 @@ async function loadSasazuka() {
     setImagetbPadding("0");
 
     vue.selected_station = "sasazuka";
+    vue.is_all = false;
     //await getToken("sasazuka");
     //setInterval("(async () => { await updateToken(); })()", 10000);
 }
@@ -270,6 +275,7 @@ async function backToWholeImage() {
     setStationButtonHidden(false);
     setImagetbPadding("17.1%");
     vue.selected_station = "";
+    vue.is_all = true;
  
     const url = 'https://us-central1-koken-key.cloudfunctions.net/referPeerid';
     fetch(url)

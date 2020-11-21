@@ -41,11 +41,13 @@
     <div class="col-12">
         <h1>工研鉄研合同 プラレール遠隔操作体験 特設サイト</h1>
         <p>プラレール操作を遠隔で体験してみませんか？ここでは誰でも気軽に遠隔操作を行えます！！<br>
-        ※他の人が操作している間は操作できません。順番が回るまでしばらくお待ちください。</p>
+        ※ほかの方が操作した動作は画面上には反映されません。ボタンを１度操作し、画面上の表示と一致させてから操作してください</p>
     </div>
     <div class="col-lg">
     <div class="box">
-        <video id="video" width="100%" autoplay muted playsinline></video>
+        <p>本日は１０時から１９時の配信を予定しております。昨日の様子はこちらから御覧いただけます。</p>
+        <iframe v-show="is_all" src="https://www.youtube.com/embed/TaAIVwADyO8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <video  v-show="!is_all"id="video" width="100%" autoplay muted playsinline></video>
         <!-- <video id="video" width="100%" autoplay muted playsinline></video> -->
     </div>
     </div>
