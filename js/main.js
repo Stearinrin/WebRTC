@@ -304,5 +304,5 @@ async function checkToken() {
 })();
 async function displaySpeed(obj) {
     document.getElementById('speedvalue').value = obj.value;
-    await sendOperate("train", "speed", obj.value + 50);
+    await sendOperate("train", "train", "speed", parseInt(obj.value) + 50);
 }
