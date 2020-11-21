@@ -136,7 +136,7 @@ const vue = new Vue({
                 stations[station].stops[operable_id].text = (stations[station].stops[operable_id].status ? stations[station].stops[operable_id].on_text : stations[station].stops[operable_id].off_text);
                 stations[station].stops[operable_id].class = (stations[station].stops[operable_id].status ? "btn btn-info control-btn" : "btn btn-outline-info control-btn");
                 
-                await sendOperate(station + "_" + operable_id, "switch", (stations[station].stops[operable_id].status ? "On" : "Off"));
+                await sendOperate(station,station + "_" + operable_id, "switch", (stations[station].stops[operable_id].status ? "On" : "Off"));
             } 
             else {
                 stations[station].branchs[operable_id].status = !stations[station].branchs[operable_id].status;
@@ -144,7 +144,7 @@ const vue = new Vue({
                 stations[station].branchs[operable_id].text = (stations[station].branchs[operable_id].status ? stations[station].branchs[operable_id].on_text:stations[station].branchs[operable_id].off_text);
                 stations[station].branchs[operable_id].class = (stations[station].branchs[operable_id].status ? "btn btn-dark control-btn" : "btn btn-outline-dark control-btn");
                 
-                await sendOperate(station + "_" + operable_id, "switch", (stations[station].stops[operable_id].status ? "On" : "Off"));
+                await sendOperate(station,station + "_" + operable_id, "switch", (stations[station].branchs[operable_id].status ? "On" : "Off"));
             }
         }
     },
@@ -202,7 +202,7 @@ async function loadChofu() {
     setImagetbPadding("0");
 
     vue.selected_station = "chofu";
-    await getToken("chofu");
+    //await getToken("chofu");
     //setInterval("(async () => { await updateToken(); })()", 10000);
 }
 
@@ -217,7 +217,7 @@ async function loadMeidaimae() {
     setImagetbPadding("0");
 
     vue.selected_station = "meidaimae";
-    await getToken("meidaimae");
+    //await getToken("meidaimae");
     //setInterval("(async () => { await updateToken(); })()", 10000);
 }
 
@@ -234,7 +234,7 @@ async function loadKitano() {
     setImagetbPadding("0");
 
     vue.selected_station = "kitano";
-    await getToken("kitano");
+    //await getToken("kitano");
     //setInterval("(async () => { await updateToken(); })()", 10000);
 }
 
@@ -253,7 +253,7 @@ async function loadSasazuka() {
     setImagetbPadding("0");
 
     vue.selected_station = "sasazuka";
-    await getToken("sasazuka");
+    //await getToken("sasazuka");
     //setInterval("(async () => { await updateToken(); })()", 10000);
 }
 
@@ -272,10 +272,35 @@ async function backToWholeImage() {
     vue.selected_station = "";
 }
 
+async function checkToken() {
+    let order = await updateToken();
+    if (order['Order'] == 1) {
+        stations.forEach(station => {
+            station.stops.forEach(operable => {
+                operable.status = false;
+                operable.image = operable.off_image;
+                operable.text = operable.off_text;
+                operable.class = "btn btn-outline-info control-btn";
+            });
+            station.branchs.forEach(operable => {
+                operable.status = false;
+                operable.image = operable.off_image;
+                operable.text = operable.off_text;
+                operable.class = "btn btn-outline-dark control-btn";
+            });
+        });
+        await sendOperate("train", "speed", 49);
+    }
+    else {
+        alert("他の人が使用中です！");
+        console.error("Another person is in operation!");
+    }
+}
+
 //alert(getLog());
 (async () => {
-    await getToken("train");
-    setInterval("(async () => { await updateToken(); })()", 10000);
+    //await getToken("train");
+    //setInterval("(async () => { await checkToken(); })()", 10000);
 })();
 async function displaySpeed(obj) {
     document.getElementById('speedvalue').value = obj.value;

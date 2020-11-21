@@ -10,33 +10,60 @@ async function GetHttp(url, queries){
 
     console.log(targetURL)
 
-    const getData = async () => {
-        try {
-          const response = await fetch(targetURL, { 
-            mode: 'no-cors'
-          });
-          if (response.ok) {
-            const jsonResponse = await response.json();
-            return jsonResponse
-          }
-          throw new Error('Request failed!');
-        } catch (error) {
-          console.log(error);
-        }
-      }
-    return await getData();
+  console.log(url);
+
+  fetch(targetURL)
+    .then(function (data) {
+      return data.json(); // 読み込むデータをJSONに設定
+    })
+    .then(function (json) {
+      console.log(json)
+    });
+
+
+    // const getData = async () => {
+    //     try {
+    //       /*const response = await fetch(targetURL, { 
+    //         mode: 'no-cors'
+    //       });*/
+    //       xhr = new XMLHttpRequest();
+    //       //xhr.setRequestHeader('Content-Type', 'application/json');
+    //       xhr.open("GET", targetURL, true);
+    //       xhr.send();
+    //       const response = xhr.responseText;
+    //       xhr.abort();
+    //       if (response.status == 200) {
+    //         const jsonResponse = JSON.parse(response); //await response.json();
+    //         return jsonResponse
+    //       }else{
+    //         console.log(response)
+    //       }
+    //       throw new Error('Request done!');
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   }
+    // return await getData();
 }
 
 async function PostHttp(url){
     const getData = async () => {
         try {
-          const response = await fetch(url, {
+          /*const response = await fetch(url, {
             method:"POST",
             mode: 'no-cors'
-          });
-          if (response.ok) {
-            const jsonResponse = await response.json();
+          });*/
+          xhr = new XMLHttpRequest();
+          //xhr.setRequestHeader('Content-Type', 'application/json');
+          xhr.open("POST", targetURL, true);
+          xhr.send();
+          const response = xhr.responseText;
+          xhr.abort();
+          if (response.status == 200) {
+            const jsonResponse = JSON.parse(response); //await response.json();
             return jsonResponse
+          } else {
+            console.log(response)
           }
           throw new Error('Request failed!');
         } catch (error) {
@@ -67,17 +94,18 @@ async function getUnitsList(){
 var UnitName;
 var Token;
 
-async function getToken(unitName){
+function getToken(unitName){
     UnitName = unitName;
     const url = `${endpoint}/units/${unitName}`
-    const res = await PostHttp(url)
-    Token = res.Token
-    console.log(Token);
+    const res = PostHttp(url);
+    console.log(res);
+    //Token = res.Token;
+    //alert(Token);
 }
 
 async function updateToken(){
     const url = `${endpoint}/units/${UnitName}`
-    GetHttp(url,{"token":Token})
+    return await GetHttp(url,{"token":Token})
 }
 
 async function getUnitDetail(unitName){
@@ -85,8 +113,8 @@ async function getUnitDetail(unitName){
     return await GetHttp(url)
 }
 
-async function sendOperate(operableName,cmd,arg){
-    const url = `${endpoint}/units/${UnitName}/${operableName}`
+async function sendOperate(stationname,operableName,cmd,arg){
+  const url = `${endpoint}/units/${stationname}/${operableName}`
     return await GetHttp(url,{cmd,arg,"token":Token})
 }
 
