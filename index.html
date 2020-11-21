@@ -22,7 +22,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/db6e84dbc8.js" crossorigin="anonymous"></script>
     <script src="js/load.js" crossorigin="anonymous"></script>
-    <script src="js/api.js" crossorigin="anonymous"></script>
+    <script src="js/api.js"></script>
     <title>工研×鉄研 プラレール遠隔操作体験 特設サイト</title>
 </head>
 <body>
@@ -76,7 +76,7 @@
         <p id="describe-text">駅をクリック/タップしてみてください！</p>
         <button v-for="s,k in stations[selected_station].stops" v-on:click="push_btn(selected_station,true,k)" :class="s.class">{{s.text}}</button><br/>
         <button v-for="s,k in stations[selected_station].branchs" v-on:click="push_btn(selected_station,false,k)" :class="s.class">{{s.text}}</button><br/>
-        <p>列車速度：<output id="speedvalue">100</output> <input type="range" name="speed" id="speed" min="0" max="100" step="1" value="100" oninput="displaySpeed(this)"></p>
+        <p>列車速度：<output id="speedvalue">49</output> <input type="range" name="speed" id="speed" min="-50" max="49" step="1" value="49" oninput="displaySpeed(this)"></p>
     </div>
     </div>
     </div>
@@ -96,6 +96,6 @@
     <script>
         
     </script>
-    <script src="js/main.js" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

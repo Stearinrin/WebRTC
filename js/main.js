@@ -276,5 +276,5 @@ getToken("train");
 //alert(getLog());
 function displaySpeed(obj) {
     document.getElementById('speedvalue').value = obj.value;
-    sendOperate("train", "speed", obj.value);
+    sendOperate("train", "speed", obj.value + 50);
 }

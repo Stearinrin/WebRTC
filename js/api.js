@@ -12,7 +12,9 @@ async function GetHttp(url, queries){
 
     const getData = async () => {
         try {
-          const response = await fetch(targetURL);
+          const response = await fetch(targetURL, { headers: {
+            'Content-Type': 'application/json'            
+          }});
           if (response.ok) {
             const jsonResponse = await response.json();
             return jsonResponse
@@ -42,7 +44,7 @@ async function PostHttp(url){
 }
 
 //const endpoint = "http://localhost:8080"
-const endpoint = "https://gcp.pfpfdev.net:8080"
+const endpoint = "https://gcp.pfpfdev.net"
 
 async function getDevicesList(){
     const url = `${endpoint}/devices`
