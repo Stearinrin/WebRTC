@@ -202,12 +202,8 @@ function loadChofu() {
     setImagetbPadding("0");
 
     vue.selected_station = "chofu";
-    if (!Token) {
-        getToken("chofu");
-    }
-    else {
-        setInterval("updateToken()", 10000);
-    }
+    getToken("chofu");
+    setInterval("updateToken()", 10000);
 }
 
 function loadMeidaimae() {
@@ -221,12 +217,8 @@ function loadMeidaimae() {
     setImagetbPadding("0");
 
     vue.selected_station = "meidaimae";
-    if (!Token) {
-        getToken("meidaimae");
-    }
-    else {
-        setInterval("updateToken()", 10000);
-    }
+    getToken("meidaimae");
+    setInterval("updateToken()", 10000);
 }
 
 function loadKitano() {
@@ -242,12 +234,8 @@ function loadKitano() {
     setImagetbPadding("0");
 
     vue.selected_station = "kitano";
-    if (!Token) {
-        getToken("kitano");
-    }
-    else {
-        setInterval("updateToken()", 10000);
-    }
+    getToken("kitano");
+    setInterval("updateToken()", 10000);
 }
 
 function loadSasazuka() {
@@ -265,12 +253,8 @@ function loadSasazuka() {
     setImagetbPadding("0");
 
     vue.selected_station = "sasazuka";
-    if (!Token) {
-        getToken("sasazuka");
-    }
-    else {
-        setInterval("updateToken()", 10000);
-    }
+    getToken("sasazuka");
+    setInterval("updateToken()", 10000);
 }
 
 function backToWholeImage() {    
@@ -288,9 +272,8 @@ function backToWholeImage() {
     vue.selected_station = "";
 }
 
-if (!gotTrainToken) {
-    getToken("train");
-}
+getToken("train");
+//alert(getLog());
 function displaySpeed(obj) {
     document.getElementById('speedvalue').value = obj.value;
     sendOperate("train", "speed", obj.value);
