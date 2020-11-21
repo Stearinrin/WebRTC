@@ -76,6 +76,7 @@
         <p id="describe-text">駅をクリック/タップしてみてください！</p>
         <button v-for="s,k in stations[selected_station].stops" v-on:click="push_btn(selected_station,true,k)" :class="s.class">{{s.text}}</button><br/>
         <button v-for="s,k in stations[selected_station].branchs" v-on:click="push_btn(selected_station,false,k)" :class="s.class">{{s.text}}</button><br/>
+        <p>列車速度：<output id="speedvalue">100</output> <input type="range" name="speed" id="speed" min="0" max="100" step="1" value="100" oninput="displaySpeed(this)"></p>
     </div>
     </div>
     </div>

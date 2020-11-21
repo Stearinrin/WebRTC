@@ -67,6 +67,12 @@ let context = canvas.getContext('2d');
 context.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 
 // :: to here
+let gotChofuToken = false;
+let gotMeidaiToken = false;
+let gotSasazukaToken = false;
+let gotKitanoToken = false;
+let gotTrainToken = false;
+
 let station_operables = {};
 
 const stations = {
@@ -280,4 +286,12 @@ function backToWholeImage() {
     setStationButtonHidden(false);
     setImagetbPadding("17.1%");
     vue.selected_station = "";
+}
+
+if (!gotTrainToken) {
+    getToken("train");
+}
+function displaySpeed(obj) {
+    document.getElementById('speedvalue').value = obj.value;
+    sendOperate("train", "speed", obj.value);
 }

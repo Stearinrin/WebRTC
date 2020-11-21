@@ -67,6 +67,7 @@ async function getToken(unitName){
     const url = `${endpoint}/units/${unitName}`
     const res = await PostHttp(url)
     Token = res.Token
+    console.log(Token);
 }
 
 async function updateToken(){
