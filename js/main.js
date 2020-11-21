@@ -270,6 +270,15 @@ async function backToWholeImage() {
     setStationButtonHidden(false);
     setImagetbPadding("17.1%");
     vue.selected_station = "";
+ 
+    const url = 'https://us-central1-koken-key.cloudfunctions.net/referPeerid';
+    fetch(url)
+    .then(function (data) {
+        return data.json(); // 読み込むデータをJSONに設定
+    })
+    .then(function (json) {
+        this.camera_peerids = json
+    });
 }
 
 async function checkToken() {
