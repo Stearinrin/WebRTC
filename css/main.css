@@ -23,20 +23,27 @@ h1 {
     margin: 0.5em;
 }
 
+footer {
+    text-align: center;
+}
+
 .station {
     background-color: #2779bd55;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: calc(90% + 0.5vw);
+    font-size: calc(80% + 0.2vw);
     font-weight: bold;
+    color: #000000;
     border-radius: 10%;
     cursor: pointer;
-    -webkit-text-stroke: 0.02em rgba(255, 255, 255, 1);
+    text-shadow: 2px 2px 3px #ffffff99, -2px 2px 3px #ffffff99,
+                 2px -2px 3px #ffffff99, -2px -2px 3px #ffffff99;
 }
 
 .box {
     position: relative;
+    text-align: center;
     margin: 1em;
 }
 
@@ -44,7 +51,7 @@ h1 {
     position: absolute;
     left: 0;
     top: 0;
-    border: 5px ridge #000088;
+    border: 5px ridge #dd0076;
 }
 
 .station > a {
@@ -137,4 +144,14 @@ h1 {
     position: absolute;
     top: 10%;
     left: 44%;
+}
+
+#freezelayer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    background: #ffffff;
+    display: block;
 }

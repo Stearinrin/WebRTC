@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex,nofollow">
+    <meta property="og:url" content="https://chofufes-plarail-2020.takoyaki3.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="工研×鉄研 プラレール遠隔操作体験 特設サイト" />
+    <meta property="og:description" content="プラレール操作を遠隔で体験してみませんか？ここでは誰でも気軽に遠隔操作を行えます！！" />
+    <meta property="og:image" content="image/thumbnail.png" />
+    <meta name="twitter:card" content="summary"></meta>
+    <meta name="twitter:site" content="@ueckoken" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/html5reset-1.6.1.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -16,14 +23,14 @@
     <script src="https://kit.fontawesome.com/db6e84dbc8.js" crossorigin="anonymous"></script>
     <script src="js/load.js" crossorigin="anonymous"></script>
     <script src="js/api.js" crossorigin="anonymous"></script>
-    <title>遠隔操作体験特設サイト</title>
+    <title>工研×鉄研 プラレール遠隔操作体験 特設サイト</title>
 </head>
 <body>
     <div id="app">
     <div class="container">
     <div class="row">
     <div class="col-12">
-        <h1>遠隔操作体験特設サイト</h1>
+        <h1>工研鉄研合同 プラレール遠隔操作体験 特設サイト</h1>
         <p>プラレール操作を遠隔で体験してみませんか？ここでは誰でも気軽に遠隔操作を行えます！！<br>
         ※他の人が操作している間は操作できません。順番が回るまでしばらくお待ちください。</p>
     </div>
@@ -56,6 +63,8 @@
         <div id="sasasta" class="station" onclick="loadSasazuka()">笹塚駅</div>
         <div id="kitanosta" class="station" onclick="loadKitano()">北野駅</div>
         <div id="backtokeio" class="station" hidden="true" onclick="backToWholeImage()">戻る</div>
+
+        <div id="freezelayer" hidden="false"></div>
     </div>
     <!-- <p id="server-id" hidden="true"></p>
     <textarea id="their-id"></textarea>
@@ -64,14 +73,21 @@
     </div>
     <div class="control-btns">
         <h3>こちらから操作できます</h3>
-        <p id="describe-text">駅をクリックしてみてください！</p>
+        <p id="describe-text">駅をクリック/タップしてみてください！</p>
         <button v-for="s,k in stations[selected_station].stops" v-on:click="push_btn(selected_station,true,k)" :class="s.class">{{s.text}}</button><br/>
         <button v-for="s,k in stations[selected_station].branchs" v-on:click="push_btn(selected_station,false,k)" :class="s.class">{{s.text}}</button><br/>
     </div>
     </div>
     </div>
     <footer>
-        <p style="text-align: center;">&copy; 2020 UEC Koken.</p>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="工研🛠／鉄研🚎コラボ開催中！今ならプラレールの遠隔操作ができるよ！今すぐアクセス！" data-hashtags="バーチャル調布祭" data-lang="ja" data-show-count="false">Tweet</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a href="https://twitter.com/ueckoken?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-text="工研🛠／鉄研🚎コラボ開催中！今ならプラレールの遠隔操作ができるよ！今すぐアクセス！" data-hashtags="バーチャル調布祭" data-lang="ja" data-show-count="false">Follow @ueckoken</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="https://chofufes-plarail-2020.takoyaki3.com/" data-color="default" data-size="large" data-count="false" style="display: none;"></div>
+        <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+        <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" data-hatena-bookmark-width="100" data-hatena-bookmark-height="30" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        <p style="text-align: center;">&copy; 2020 <a href="https://www.koken.club.uec.ac.jp/">UEC Koken</a>.</p>
     </footer>
     <script>
         

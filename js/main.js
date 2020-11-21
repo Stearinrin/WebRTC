@@ -125,11 +125,12 @@ const vue = new Vue({
                 stations[station].stops[operable_id].image = (stations[station].stops[operable_id].status ? stations[station].stops[operable_id].on_image : stations[station].stops[operable_id].off_image);
                 stations[station].stops[operable_id].text = (stations[station].stops[operable_id].status ? stations[station].stops[operable_id].on_text : stations[station].stops[operable_id].off_text);
                 stations[station].stops[operable_id].class = (stations[station].stops[operable_id].status ? "btn btn-info control-btn" : "btn btn-outline-info control-btn");
+                
                 if (!Token) {
                     getToken(station);
                 }
                 else {
-                    updateToken();
+                    setInterval("updateToken()", 10000);
                 }
                 sendOperate(operable_id, "switch", (stations[station].stops[operable_id].status ? "On" : "Off"));
             } 
@@ -138,11 +139,12 @@ const vue = new Vue({
                 stations[station].branchs[operable_id].image = (stations[station].branchs[operable_id].status ? stations[station].branchs[operable_id].on_image : stations[station].branchs[operable_id].off_image);
                 stations[station].branchs[operable_id].text = (stations[station].branchs[operable_id].status ? stations[station].branchs[operable_id].on_text:stations[station].branchs[operable_id].off_text);
                 stations[station].branchs[operable_id].class = (stations[station].branchs[operable_id].status ? "btn btn-dark control-btn" : "btn btn-outline-dark control-btn");
+                
                 if (!Token) {
                     getToken(station);
                 }
                 else {
-                    updateToken();
+                    setInterval("updateToken()", 10000);
                 }
                 sendOperate(operable_id, "switch", (stations[station].stops[operable_id].status ? "On" : "Off"));
             }
