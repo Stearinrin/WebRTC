@@ -68,8 +68,6 @@ context.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 
 let yt_movie = document.getElementById("yt_video");
 yt_movie.height = yt_movie.clientWidth * 9 / 16;
-let yt_movie2 = document.getElementById("yt_video2");
-yt_movie2.height = yt_movie2.clientWidth * 3 / 4;
 
 // :: to here
 let gotChofuToken = false;
@@ -178,6 +176,7 @@ function setStationButtonHidden(value) {
     document.getElementById("meidaista").hidden = value;
     document.getElementById("kitanosta").hidden = value;
     document.getElementById("sasasta").hidden = value;
+    document.getElementById("kudansta").hidden = value;
     document.getElementById("backtokeio").hidden = !value;
     document.getElementById("describe-text").hidden = value;
 }
@@ -185,6 +184,12 @@ function setStationButtonHidden(value) {
 function setImagetbPadding(value) {
     document.getElementById("imagebox").style.setProperty('padding-top', value);
     document.getElementById("imagebox").style.setProperty('padding-bottom', value);
+}
+
+function resizingVid() {
+    let yt_movie = document.getElementById("yt_video");
+    let w = yt_movie.clientWidth;
+    yt_movie.height = w * 9 / 16;
 }
 
 async function loadChofu() {
@@ -265,6 +270,12 @@ async function loadSasazuka() {
     vue.is_all = false;
     //await getToken("sasazuka");
     //setInterval("(async () => { await updateToken(); })()", 10000);
+}
+
+async function loadKudanshita() {
+    document.getElementById("backtokeio").hidden = false;
+    makeCall(camera_peerids["kudanshita"].peer_id)
+    vue.is_all = false;
 }
 
 async function backToWholeImage() {    

@@ -47,11 +47,11 @@
     </div>
     <div class="col-lg">
     <div class="box">
-        <iframe v-show="is_all" id="yt_video" width="100%" height="100%" src="https://www.youtube.com/embed/eYaMtSAEYME" frameborder="0" 
+        <iframe v-show="is_all" id="yt_video" width="100%" onresize="resizingVid()" src="https://www.youtube.com/embed/eYaMtSAEYME" frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="box">
-            <video v-show="!is_all" id="video" width="100%" autoplay muted playsinline></video>
+        <video v-show="!is_all" id="video" width="100%" autoplay muted playsinline></video>
         <!-- <video id="video" width="100%" autoplay muted playsinline></video> -->
     </div>
     </div>
@@ -78,6 +78,7 @@
         <div id="meidaista" class="station" onclick="loadMeidaimae()">明大前駅</div>
         <div id="sasasta" class="station" onclick="loadSasazuka()">笹塚駅</div>
         <div id="kitanosta" class="station" onclick="loadKitano()">北野駅</div>
+        <div id="kudansta" class="station" onclick="loadKudanshita()">九段下駅</div>
         <div id="backtokeio" class="station" hidden="true" onclick="backToWholeImage()">戻る</div>
 
         <canvas id="freezelayer" width="100%" height="100%" hidden="false"></canvas>
@@ -93,7 +94,7 @@
         <button v-for="s,k in stations[selected_station].stops" v-on:click="push_btn(selected_station,true,k)" :class="s.class">{{s.text}}</button><br/>
         <button v-for="s,k in stations[selected_station].branchs" v-on:click="push_btn(selected_station,false,k)" :class="s.class">{{s.text}}</button><br/>
         <p>速度操作可能な列車からの前面展望です！</p>
-        <iframe id="yt_video2" width="100%" src="https://www.youtube.com/embed/TiE3QkP6z-c" frameborder="0"
+        <iframe src="https://www.youtube.com/embed/TiE3QkP6z-c" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
         <p>列車速度：<output id="speedvalue">49</output> <input type="range" name="speed" id="speed" min="-50" max="49" step="1" value="49" onchange="displaySpeed(this)"></p>
