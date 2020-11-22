@@ -66,6 +66,11 @@ let canvas = document.getElementById("freezelayer");
 let context = canvas.getContext('2d');
 context.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 
+let yt_movie = document.getElementById("yt_video");
+yt_movie.height = yt_movie.clientWidth * 9 / 16;
+let yt_movie2 = document.getElementById("yt_video2");
+yt_movie2.height = yt_movie2.clientWidth * 3 / 4;
+
 // :: to here
 let gotChofuToken = false;
 let gotMeidaiToken = false;
