@@ -146,6 +146,14 @@ footer {
     left: 7%;
 }
 
+#iwamotosta {
+    width: 20%;
+    height: 16%;
+    position: absolute;
+    top: 34%;
+    left: 30%;
+}
+
 #backtokeio {
     width: 12%;
     height: 10%;

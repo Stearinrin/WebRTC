@@ -272,7 +272,13 @@ async function loadSasazuka() {
     //setInterval("(async () => { await updateToken(); })()", 10000);
 }
 
-async function loadKudanshita() {
+async function loadKudansta() {
+    document.getElementById("backtokeio").hidden = false;
+    makeCall(camera_peerids["kudanshita"].peer_id)
+    vue.is_all = false;
+}
+
+async function loadiwamotosta() {
     document.getElementById("backtokeio").hidden = false;
     makeCall(camera_peerids["kudanshita"].peer_id)
     vue.is_all = false;
