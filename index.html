@@ -42,8 +42,11 @@
         <!-- <h2>ビデオ通話ぜひ！</h2> -->
         <p>工究・鉄研の部員に話を聞きたい！遠隔操作でカメラを移動して欲しい！という方は、<h2><a href="https://meet.google.com/evr-ftab-sci">Google Meetsでビデオ通話</a></h2>も行っております。</p>
         <p>プラレール操作を遠隔で体験してみませんか？ここでは誰でも気軽に遠隔操作を行えます！！<br>
+        <p>遠隔操作列車は九段下駅カメラをご覧ください</p>
         ※ほかの方が操作した動作は画面上には反映されません。ボタンを１度操作し、画面上の表示と一致させてから操作してください</p>
         <i class="fa fa-link" aria-hidden="true"></i><a href="http://www.uecrail.club.uec.ac.jp/official/20chofufes/plarail.html">詳しい説明はこちらから</a>
+        <h2>本日の展示は終了させて頂きます。明日は10時～17時に展示を行います。皆様による操作お待ちしております！！</h2>
+        </h2>
     </div>
     <div class="col-lg">
     <div class="box">
@@ -96,7 +99,7 @@
         <button v-for="s,k in stations[selected_station].stops" v-on:click="push_btn(selected_station,true,k)" :class="s.class">{{s.text}}</button><br/>
         <button v-for="s,k in stations[selected_station].branchs" v-on:click="push_btn(selected_station,false,k)" :class="s.class">{{s.text}}</button><br/>
         <p>速度操作可能な列車からの前面展望です！</p>
-        <iframe src="https://www.youtube.com/embed/fSR7j0d_Y4c" frameborder="0"
+        <iframe src="https://www.youtube.com/embed/CnVFRJQ6VqY" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
         <p>列車速度：<output id="speedvalue">49</output> <input type="range" name="speed" id="speed" min="-50" max="49" step="1" value="49" onchange="displaySpeed(this)"></p>
