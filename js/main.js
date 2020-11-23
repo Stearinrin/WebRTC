@@ -162,6 +162,8 @@ const vue = new Vue({
         .then(function (json) {
             this.camera_peerids = json
         });
+
+        loadOperators();
     },
     watch:{
         selected_station:function(selected_station){
@@ -192,7 +194,33 @@ function resizingVid() {
     yt_movie.height = w * 9 / 16;
 }
 
+var loadOperatorsTask;
+
+async function loadOperators(targetName,unitName){
+    console.log("Called")
+    if(!targetName){
+        document.getElementById("curStation").innerText = "すべての操作対象";
+        const list = await getUnitsList();
+        const array = Object.entries(list).map((val)=>list[val[0]])
+        console.log(array)
+        const sum = array.reduce((prev,cur)=>cur&&cur.Queue?prev+cur.Queue.length:prev,0)
+        document.getElementById("curOperators").innerText = sum;
+        return
+    }
+    if(unitName){
+        await getToken(unitName)
+        document.getElementById("curStation").innerText = targetName;
+    }
+    //getTokenで設定されるものを読みに行く問題
+    const unitInfo = await getUnitDetail(UnitName);
+    console.log(unitInfo)
+    if(unitInfo&&unitInfo.Queue){
+        document.getElementById("curOperators").innerText = unitInfo.Queue.length;
+    }
+}
+
 async function loadChofu() {
+    loadOperators("調布駅","chofu")
     //client_image_height_keio = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["chofu"].src;
     // document.getElementById("layer1").src = img["chofu_b1_off"].src;
@@ -219,6 +247,7 @@ async function loadChofu() {
 }
 
 async function loadMeidaimae() {
+    loadOperators("明大前駅","meidaimae")
     //client_image_height_keio = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["meidaimae"].src; 
     // document.getElementById("layer1").src = img["meidaimae_s1_off"].src;
@@ -235,6 +264,7 @@ async function loadMeidaimae() {
 }
 
 async function loadKitano() {
+    loadOperators("北野駅","kitano")
     //client_image_height_keio = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["kitano"].src;
     // document.getElementById("layer1").src = img["kitano_b1_off"].src;
@@ -253,6 +283,7 @@ async function loadKitano() {
 }
 
 async function loadSasazuka() {
+    loadOperators("笹塚駅","sasazuka")
     //client_image_height_keio = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["sasazuka"].src;
     // document.getElementById("layer1").src = img["sasazuka_b1_off"].src;
@@ -284,7 +315,8 @@ async function loadiwamotosta() {
     vue.is_all = false;
 }
 
-async function backToWholeImage() {    
+async function backToWholeImage() {   
+    loadOperators(); 
     //client_image_height_sta = document.getElementById("image").clientHeight;
     document.getElementById("image").src = img["keio"].src;
     // document.getElementById("layer1").hidden = true;

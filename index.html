@@ -45,7 +45,7 @@
         <p>遠隔操作列車は九段下駅カメラをご覧ください</p>
         ※ほかの方が操作した動作は画面上には反映されません。ボタンを１度操作し、画面上の表示と一致させてから操作してください</p>
         <i class="fa fa-link" aria-hidden="true"></i><a href="http://www.uecrail.club.uec.ac.jp/official/20chofufes/plarail.html">詳しい説明はこちらから</a>
-        <h2>本日の展示は終了させて頂きます。明日は10時～17時に展示を行います。皆様による操作お待ちしております！！</h2>
+        <!-- <h2>本日の展示は終了させて頂きます。明日は10時～17時に展示を行います。皆様による操作お待ちしております！！</h2> -->
         </h2>
     </div>
     <div class="col-lg">
@@ -96,6 +96,7 @@
     <div class="control-btns">
         <h3>こちらから操作できます</h3>
         <p id="describe-text">駅をクリック/タップしてみてください！</p>
+        <p><span id="curStation">すべての操作対象</span>は只今<span id="curOperators">0</span>人が操作中</p>
         <button v-for="s,k in stations[selected_station].stops" v-on:click="push_btn(selected_station,true,k)" :class="s.class">{{s.text}}</button><br/>
         <button v-for="s,k in stations[selected_station].branchs" v-on:click="push_btn(selected_station,false,k)" :class="s.class">{{s.text}}</button><br/>
         <p>速度操作可能な列車からの前面展望です！</p>

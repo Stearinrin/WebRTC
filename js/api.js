@@ -12,13 +12,12 @@ async function GetHttp(url, queries){
 
   console.log(url);
 
-  fetch(targetURL)
-    .then(function (data) {
-      return data.json(); // 読み込むデータをJSONに設定
-    })
-    .then(function (json) {
-      console.log(json)
-    });
+  const res = await fetch(targetURL,{})
+
+  const json = await res.json()
+
+  return json
+
 
 
     // const getData = async () => {
@@ -46,31 +45,11 @@ async function GetHttp(url, queries){
     // return await getData();
 }
 
-async function PostHttp(url){
-    const getData = async () => {
-        try {
-          /*const response = await fetch(url, {
-            method:"POST",
-            mode: 'no-cors'
-          });*/
-          xhr = new XMLHttpRequest();
-          //xhr.setRequestHeader('Content-Type', 'application/json');
-          xhr.open("POST", targetURL, true);
-          xhr.send();
-          const response = xhr.responseText;
-          xhr.abort();
-          if (response.status == 200) {
-            const jsonResponse = JSON.parse(response); //await response.json();
-            return jsonResponse
-          } else {
-            console.log(response)
-          }
-          throw new Error('Request failed!');
-        } catch (error) {
-          console.log(error);
-        }
-      }
-    return await getData();
+async function PostHttpRetText(url){
+  const res =  await fetch(url,{method:"POST"})
+  const text = await res.text()
+  console.log("Called")
+  return text;
 }
 
 //const endpoint = "http://localhost:8080"
@@ -93,14 +72,18 @@ async function getUnitsList(){
 
 var UnitName;
 var Token;
+var Timer;
 
-function getToken(unitName){
+async function getToken(unitName){
     UnitName = unitName;
     const url = `${endpoint}/units/${unitName}`
-    const res = PostHttp(url);
+    const res = await PostHttpRetText(url);
     console.log(res);
-    //Token = res.Token;
-    //alert(Token);
+    Token = res.match(/\d+/);
+    if(Timer){
+      clearInterval(Timer);
+    }
+    Timer = setInterval(updateToken,10000)
 }
 
 async function updateToken(){
@@ -109,7 +92,7 @@ async function updateToken(){
 }
 
 async function getUnitDetail(unitName){
-    const url = `${endpoint}/units/${UnitName}`
+    const url = `${endpoint}/units/${unitName}`
     return await GetHttp(url)
 }
 
