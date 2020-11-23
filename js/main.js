@@ -176,6 +176,7 @@ function setStationButtonHidden(value) {
     document.getElementById("meidaista").hidden = value;
     document.getElementById("kitanosta").hidden = value;
     document.getElementById("sasasta").hidden = value;
+    document.getElementById("iwamotosta").hidden = value;
     document.getElementById("kudansta").hidden = value;
     document.getElementById("backtokeio").hidden = !value;
     document.getElementById("describe-text").hidden = value;
@@ -280,7 +281,7 @@ async function loadKudansta() {
 
 async function loadiwamotosta() {
     document.getElementById("backtokeio").hidden = false;
-    makeCall(camera_peerids["kudanshita"].peer_id)
+    makeCall(camera_peerids["iwamotocho"].peer_id)
     vue.is_all = false;
 }
 
