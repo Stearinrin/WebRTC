@@ -45,12 +45,12 @@
         <p>遠隔操作列車は九段下駅カメラをご覧ください</p>
         ※ほかの方が操作した動作は画面上には反映されません。ボタンを１度操作し、画面上の表示と一致させてから操作してください</p>
         <i class="fa fa-link" aria-hidden="true"></i><a href="http://www.uecrail.club.uec.ac.jp/official/20chofufes/plarail.html">詳しい説明はこちらから</a>
-        <!-- <h2>本日の展示は終了させて頂きます。明日は10時～17時に展示を行います。皆様による操作お待ちしております！！</h2> -->
+        <h2>本日、最終日です！YoutubeLiveでも配信しております。</h2>
         </h2>
     </div>
     <div class="col-lg">
     <div class="box">
-        <iframe v-show="is_all" id="yt_video" width="100%" onresize="resizingVid()" src="https://www.youtube.com/embed/eYaMtSAEYME" frameborder="0" 
+        <iframe v-show="is_all" id="yt_video" width="100%" onresize="resizingVid()" src="https://www.youtube.com/embed/X4HAFKTBFKA" frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="box">
@@ -84,6 +84,7 @@
         <div id="kitanosta" class="station" onclick="loadKitano()">北野駅</div>
         <div id="kudansta" class="station" onclick="loadKudansta()">九段下駅</div>
         <div id="iwamotosta" class="station" onclick="loadiwamotosta()">岩本町駅</div>
+        <div id="train" class="station" onclick="loadtrain()">列車前面展望</div>
         <div id="backtokeio" class="station" hidden="true" onclick="backToWholeImage()">戻る</div>
 
         <canvas id="freezelayer" width="100%" height="100%" hidden="false"></canvas>

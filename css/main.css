@@ -146,6 +146,14 @@ footer {
     left: 7%;
 }
 
+#train {
+    width: 20%;
+    height: 16%;
+    position: absolute;
+    top: 34%;
+    left: 74%;
+}
+
 #iwamotosta {
     width: 20%;
     height: 16%;
